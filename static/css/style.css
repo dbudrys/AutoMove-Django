@@ -1,0 +1,259 @@
+/* This file is from /AO-project/cars/static/css/ */
+
+/* https://support.google.com/adsense/answer/185666?hl=en 
+    EXAMPLE Ads */
+
+/* COLOR PALLETE */
+
+/* 
+#eceff1 blue-grey lighten-5
+#cfd8dc blue-grey lighten-4
+#b0bec5 blue-grey lighten-3
+#90a4ae blue-grey lighten-2
+#78909c blue-grey lighten-1
+#607d8b blue-grey
+#546e7a blue-grey darken-1
+#455a64 blue-grey darken-2
+#37474f blue-grey darken-3
+#263238 blue-grey darken-4
+*/
+
+
+/* Setting the font for the whole webpage*/
+body{
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  
+}
+
+/* Setting parallax-container, JavaScript is initialized*/
+.parallax-container {
+min-height: 570px;
+line-height: 0;
+height: auto;
+
+color: rgba(255,255,255,.9);
+}
+.parallax-container .section {
+  width: 100%;
+}
+
+.parallax-container img{
+  height: 1024px;
+
+}
+
+.parallax-header-text{
+  color: white;
+
+  text-transform: uppercase;
+
+   /* Visible Text Shadow */
+  text-shadow: 0px 3px 0px #b2a98f,
+                 0px 14px 10px rgba(0,0,0,0.15),
+                 0px 24px 2px rgba(0,0,0,0.1),
+                 0px 34px 30px rgba(0,0,0,0.1);
+  
+  /* 3D Lookink like letters
+    text-shadow: 0 1px 0 #ccc, 
+                 0 2px 0 #c9c9c9,
+                 0 3px 0 #bbb,
+                 0 4px 0 #b9b9b9,
+                 0 5px 0 #aaa,
+                 0 6px 1px rgba(0,0,0,.1),
+                 0 0 5px rgba(0,0,0,.1),
+                 0 1px 3px rgba(0,0,0,.3),
+                 0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.25),
+                 0 10px 10px rgba(0,0,0,.2),
+                 0 20px 20px rgba(0,0,0,.15);
+  */
+}
+  
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    
+  }
+  .parallax-container {
+    background-attachment: scroll;
+  }
+}
+
+/* For small screens only*/
+@media screen and (max-width:720px) {
+ 
+  h1 {
+    font-size: 34px;
+  }
+   
+  h2 {
+    font-size: 24px;
+  }
+   
+  h3 {
+    font-size: 20px;
+  }
+   
+  h4 {
+    font-size: 16px;
+  }
+
+  h2.title{
+    margin-top: -40px;
+    padding: 30px 0 0 0 ;
+    font-weight: 600;
+    color: #455a64;
+    text-decoration: none;
+  }
+  
+   
+  }
+  
+
+/* Main Screen is being raised infront of parallax header image */
+.main-raised{
+  
+  margin-top: -70px;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  border-radius: 6px;
+  /*box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
+  height: auto;
+}
+.container{
+  width: 90%;
+}
+
+h2.title{
+  margin-top: -40px;
+  padding: 30px 0 10px 0 ;
+  font-weight: 600;
+  color: #455a64;
+  text-decoration: none;
+}
+
+
+.card-image img{
+  height: 275px;
+  width: auto;
+}
+
+.header-button{
+  margin: 5px;
+  width: 200px;
+}
+
+.card-box{
+  padding: 50px;
+}
+
+.card-image img{
+  object-fit: cover;
+}
+
+
+
+.card-image-display-main{
+  padding: 2px;
+  width: 100%; 
+  height: auto;              
+}
+
+.card-image-display{
+  padding: 2px;
+
+  width: auto;
+  height: auto;
+  max-width: 170px;
+  max-height: 150px;
+}
+
+/* For Mobile Screens*/
+@media screen and (max-width:600px) {
+  .card-image-display{
+  padding: 2px;
+
+  width: auto;
+  height: auto;
+  max-width: 90px;
+  max-height: 70px;
+  }
+}
+
+/* For Larger Screens*/
+@media screen and (min-width:990px) {
+  .card-image-display{
+  padding: 2px;
+
+  width: auto;
+  height: auto;
+  max-width: 100px;
+  max-height: 80px;
+  }
+}
+
+
+
+.car-detail-list{
+  font-size:1.5em;
+}
+
+.date-text{
+  color: #b0bec5;
+}
+
+
+/* Ribbons   MUST BE IN LITHUANIA because it is pulling from database*/
+.Parduodama {
+ display: none;
+}
+.Parduota {
+  background-color: #d32f2f;
+  border-radius: 0 4px 4px 0;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: Helvetica, sans-serif;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 15px;
+  white-space: nowrap;
+  transition: all .3s ease;
+}
+.Rezervuota {
+  background-color: #ffb300;
+  border-radius: 0 4px 4px 0;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: Helvetica, sans-serif;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 10px;
+  white-space: nowrap;
+  transition: all .3s ease;
+}
+
+
+.sidebox-ad-index{
+  
+  height: 380px;
+  border-left:1px solid #e0e0e0;
+}
+
+.footer-ad-index{
+  margin-top:-60px; 
+  z-index: 2;
+
+}
+
+.fixed-action-btn{
+  display: none;
+}
+
+.total_cars_text{
+  font-size: 12px;
+  color:#cfd8dc;
+}

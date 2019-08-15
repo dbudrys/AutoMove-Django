@@ -1,0 +1,210 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+{% load humanize %} <!-- Load from installed to humanize numbers, add commas to KAINA -->
+
+<!-- Page title coming from base.html-->
+{% block title %}
+    {{detail.pavadinimas}}
+    Cars From All Over The World | AutoMove
+{% endblock %}
+
+<!-- Page title coming from base.html - Used for SEO -->
+{% block meta_description %}
+Sellig cars from all over the world | Car Info Page
+{% endblock %}
+
+
+
+
+
+<!--Main content-->
+{% block content %}
+
+    <div class="container" style="margin-top: 100px;">
+        <div class="white main-raised z-depth-5">
+
+            <div class="container">
+
+                <h2 class="title center-align">More Info</h2>      
+  
+
+                <style>
+
+                .card-image-display-main{
+                    padding: 2px;
+                    width: 100%; 
+                    height: auto;              
+                }
+                
+                .card-image-display{
+                    padding: 2px;
+
+                    width: auto;
+                    height: auto;
+                    max-width: 170px;
+                    max-height: 150px;
+                }
+
+                /* For Mobile Screens*/
+                @media screen and (max-width:600px) {
+                    .card-image-display{
+                    padding: 2px;
+
+                    width: auto;
+                    height: auto;
+                    max-width: 90px;
+                    max-height: 70px;
+                    }
+                }
+
+                /* For Larger Screens*/
+                @media screen and (min-width:990px) {
+                    .card-image-display{
+                    padding: 2px;
+
+                    width: auto;
+                    height: auto;
+                    max-width: 100px;
+                    max-height: 80px;
+                    }
+                }
+
+
+                </style>
+
+
+
+                    <div class="row">
+                        <div class="col s12 m12 l6 xl6"> 
+                        
+                            <div class="row">
+                                <div class="col s12 m12 l12 xl12"> 
+                                        <img src="{{detail.image.url}}" 
+                                            class="materialboxed card-image-display-main" 
+                                            alt="{{detail.pavadinimas}}" >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                {% for selected_car in detail.selected_car_name.all %}
+                                <div class="col s4 m4 l3 xl3">
+                                        <img src="{{selected_car.car_image.url}}" 
+                                            class="materialboxed card-image-display" 
+                                            data-caption="{{selected_car.selected_car}} Automobilis - {{selected_car.alt_text}}" 
+                                            alt="{{selected_car.selected_car}} Automobilis - {{selected_car.alt_text}}" 
+                                            >
+                                </div>
+                                {% endfor %}
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="col s12 m12 l6 xl6" style="margin-top:-40px;">
+                            <h2 class="left-align">{{detail.pavadinimas}} {{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</h2>
+                            
+                            <div class="section">
+                                <div class="car-detail-list" style="font-size:2em;">
+                                    <b>Cost: </b>{{detail.kaina|intcomma}} <i class="material-icons" 
+                                    style="font-size: 20px">attach_money</i>
+                                </div>
+
+                                <div class="car-detail-list flow-text"><b>Make Year: </b>{{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</div>
+                                <div class="car-detail-list flow-text"><b>Engine: </b>{{detail.variklis}}</div>
+                                <div class="car-detail-list flow-text"><b>Mileage: </b>{{detail.rida}} km</div>
+                                <div class="car-detail-list flow-text"><b>Transmission: </b>{{detail.pavaruDeze}}</div>
+                                <div class="car-detail-list flow-text"><b>Fuel: </b>{{detail.kuroTipas}}</div>
+                                <div class="car-detail-list flow-text"><b>Body Type: </b>{{detail.kebuloTipas}}</div>
+                                <div class="car-detail-list flow-text"><b>Color: </b>{{detail.spalva}}</div>
+                                <div class="car-detail-list flow-text"><b>Drive Type: </b>{{detail.varantisRatai}}</div>
+                                <div class="car-detail-list flow-text"><b>Issues: </b>{{detail.defektai}}</div>
+
+                            
+                            </div>
+            
+                        </div>
+                        
+
+                        
+                        <div class="col s12 m12 l12 xl12">
+                            <div class="divider"></div>
+                            
+                            <div class="section">
+
+                                <div class="car-detail-list" style="font-size:2em;"><b>Detailed Description:</b></div>
+                    
+                                <div class="flow-text">
+                                    <div>{{detail.komentarai|safe|linebreaksbr}}</div>
+                                </div>
+                               
+                                <div class="right date-text">{{detail.skelbimasSukurtas|date:'Y-m-d'}}</div>
+                                
+                            </div>
+
+                        </div>
+                     
+
+                        <div class="col s12 m12 l12 xl12">
+                            <br>
+                            <br>
+                        
+                            <!-- Modal Trigger -->
+                            <a class="modal-trigger  btn waves-effect waves-light blue-grey darken-2 z-depth-2" 
+                                href="#modal1">Contact Us</a>
+
+                                <br>
+                                <br>
+
+                            
+                            <!-- Modal Structure -->
+                            <div id="modal1" class="modal bottom-sheet">
+
+                                <div class="modal-headers">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat right"><i class="large material-icons">close</i></a>
+                                </div>
+
+                                <div class="modal-content center">
+                                    <div class="row">
+                                            <div class="col s12 m12 l12 xl12" style="margin-top: -25px;">
+                                                
+                                                    <h5><a href="{% url 'kontaktai_page' %}" class="flow-text">Contact Form
+                                                        <i class="tiny material-icons">launch</i>
+                                                        </a><h5>
+                                            
+                                            </div>
+
+                                    </div>
+
+                                    <div class="divider"></div>
+                                    <br>
+
+                                    <div class="row" style="margin-bottom: -15px;">
+                                        <div class="col s6 m6 l6 xl6 left-align">
+                                            <h5 class="flow-text">Email</h5>
+                                            <p><a href="mailto:a@b.c" style="font-size:calc(8px + 1.2vw);">a@b.c</a></p>
+                                        </div>
+                                        <div class="col s6 m6 l6 xl6 right-align">
+                                            <h5 class="flow-text">Phone</h5>
+                                            <p><a href="tel:+(931)555-1234" style="font-size:calc(8px + 1.2vw);">(931)555-1234</a></p>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    
+            </div>
+
+        </div> 
+
+    </div>
+
+{% endblock %}
+

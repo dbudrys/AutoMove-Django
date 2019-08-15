@@ -1,0 +1,169 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+{% load humanize %} <!-- Load from installed to humanize numbers, add commas to KAINA -->
+
+<!-- Page title coming from base.html-->
+{% block title %}Cars From All Over The World| AutoMove{% endblock %}
+
+
+<!-- Page title coming from base.html - Used for SEO -->
+{% block meta_description %}
+Sellig cars from all over the world.
+{% endblock %}
+
+
+<!-- OG meta tags coming from base.html-->
+{% block meta_og_title %}
+   Lizingo Informacija
+{% endblock %}
+
+{% block meta_og_image_main %}
+{% endblock %}
+
+
+{% block content %}
+<div class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="parallax-header-text center">
+                    <b>Get Your Dream Car Today</b>
+                </h1>
+                <div class="row center">
+                    <!-- <h5 class="header col s12 light"></h5> -->
+                </div>
+
+            <!-- Button on the header parallax image -->
+                <div class="row center">
+                    <a href="{% url 'automobiliaiVisi_page' %}" class="header-button btn-large waves-effect waves-light blue-grey darken-2 z-depth-2">All Cars</a>
+                </div>    
+            
+                <br><br>
+        
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'static-website-images/header-picture.jpg' %}" alt="background img 1"></div>
+</div>
+
+
+
+<div class="container ">
+    <div class="white main-raised z-depth-5">
+        <div class="container">
+
+            <h2 class="title center-align">Purchase With Credit</h2>
+
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <p class="lizingo_intro flow-text">
+                        Dui faucibus in ornare quam viverra. Varius sit amet mattis vulputate enim. 
+                        Nisl nunc mi ipsum faucibus vitae aliquet. Sit amet nisl purus in mollis nunc sed. 
+                        Blandit volutpat maecenas volutpat blandit aliquam. 
+                        Tellus id interdum velit laoreet id donec. Fusce id velit ut tortor pretium viverra. 
+                    </p>
+                    <div class="divider"></div>
+                </div>
+            </div>
+
+                
+            <div class="row">
+                <div class="col s12 m12 l6 xl6">       
+                    <ul class="lizingo_list">
+                        <li class="flow-text"> <i class="material-icons">check_box</i>
+                            Ultrices mi tempus imperdiet nulla. </li>
+                        <li class="flow-text"> <i class="material-icons">check_box</i>
+                            Aliquam faucibus purus in massa tempor nec feugiat.</li>
+                        <li class="flow-text"> <i class="material-icons">check_box</i>
+                            Enim blandit volutpat maecenas volutpat blandit. </li>
+                        <li class="flow-text"><i class="material-icons">check_box</i>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    </ul>
+                </div>
+
+                <div class="col s12 m12 l6 xl6">
+                        <ul class="lizingo_list">
+                            <li class="flow-text"> <i class="material-icons">check_box</i>
+                                Ultrices mi tempus imperdiet nulla. </li>
+                            <li class="flow-text"> <i class="material-icons">check_box</i>
+                                Aliquam faucibus purus in massa tempor nec feugiat.</li>
+                            <li class="flow-text"> <i class="material-icons">check_box</i>
+                                Enim blandit volutpat maecenas volutpat blandit. </li>
+                            <li class="flow-text"><i class="material-icons">check_box</i>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        </ul>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="row">
+
+                    <div class="col s12 m12 l12 xl12">
+                        <br>
+                        <br>
+                    
+                        <!-- Modal Trigger -->
+                        <a class="modal-trigger  btn waves-effect waves-light blue-grey darken-2 z-depth-2" 
+                            href="#modal1">Contact Us</a>
+
+                            <br>
+                            <br>
+
+                        
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal bottom-sheet">
+
+                            <div class="modal-headers">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat right"><i class="large material-icons">close</i></a>
+                            </div>
+
+                            <div class="modal-content center">
+                                <div class="row">
+                                        <div class="col s12 m12 l12 xl12" style="margin-top: -25px;">
+                                            
+                                                <h5><a href="{% url 'kontaktai_page' %}" class="flow-text">Contact Form
+                                                    <i class="tiny material-icons">launch</i>
+                                                    </a><h5>
+                                        
+                                        </div>
+
+                                </div>
+
+                                <div class="divider"></div>
+                                <br>
+
+                                <div class="row" style="margin-bottom: -15px;">
+                                    <div class="col s6 m6 l6 xl6 left-align">
+                                        <h5 class="flow-text">Email</h5>
+                                        <p><a href="mailto:a@b.c" style="font-size:calc(8px + 1.2vw);">a@b.c</a></p>
+                                    </div>
+                                    <div class="col s6 m6 l6 xl6 right-align">
+                                        <h5 class="flow-text">Phone</h5>
+                                        <p><a href="tel:(931)555-1234" style="font-size:calc(8px + 1.2vw);">(931)555-1234</a></p>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+            
+            </div>
+
+
+        </div>
+
+    
+        
+    </div> <!-- end white container-->
+</div> <!-- end container-->
+
+
+{% endblock %}

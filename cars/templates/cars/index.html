@@ -1,0 +1,212 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+{% load humanize %} <!-- Load from installed to humanize numbers, add commas to KAINA -->
+
+<!-- Page title coming from base.html-->
+{% block title %}Cars From All Over The World| AutoMove{% endblock %}
+
+
+<!-- Page title coming from base.html - Used for SEO -->
+{% block meta_description %}
+Sellig cars from all over the world.
+{% endblock %}
+
+
+
+{% block content %}
+<div class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="parallax-header-text center">
+                    <b>Get Your Dream Car Today</b>
+                </h1>
+                <div class="row center">
+                </div>
+
+            <!-- Button on the header parallax image -->
+                <div class="row center">
+                    <a href="{% url 'automobiliaiVisi_page' %}" class="header-button btn-large waves-effect waves-light blue-grey darken-2 z-depth-2">All Cars</a>
+                </div>
+
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'static-website-images/header-picture.jpg' %}" alt="--"></div>
+</div>
+
+
+
+<div class="container ">
+    <div class="white main-raised z-depth-5">
+
+        <h2 class="title center-align">Newest Posts</h2>
+
+        <div class="row">
+
+            {% for detail in carDetails %}
+            <div class="col s12 m6 l6 xl4">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}">
+                        <img src="{{ detail.image_thumbnail.url }}" alt="{{ detail.pavadinimas}} - Automobilis">
+                        </a>
+
+                  <!--img src="{% static 'static-website-images/car1.jpg' %}"> -->
+
+
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s11">
+                                <span class="card-title activator grey-text text-darken-4 truncate" >{{detail.pavadinimas}}, {{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</span>
+                            </div>
+                            <div class="col s1"> <span class="card-title activator"><i class="material-icons right">more_vert</i></span></div>
+                        </div>
+                        <ul>
+                            <li class="truncate"><b>Cost: </b>{{detail.kaina|intcomma}} <i class="material-icons" style="font-size: 14px">attach_money</i></li>
+                            <li class="truncate"><b>Make Year: </b>{{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</li>
+                            <li class="truncate"><b>Engine: </b>{{detail.variklis}}</li>
+                            <li class="truncate"><b>Mileage: </b>{{detail.rida}} km</li>
+                            <li class="truncate"><b>Transmission: </b>{{detail.pavaruDeze}}</li>
+                            <li class="truncate"><b>Fuel: </b>{{detail.kuroTipas}}</li>
+
+                            <!--<li><b>URL: </b>{{detail.image.url}}</li> -->
+                        </ul>
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}" class="center-align btn-small waves-effect waves-light blue-grey darken-2 z-depth-2">More</a>
+                        <div class="right date-text">{{detail.skelbimasSukurtas|date:'Y-m-d'}}</div>
+                        <div class="clearfix"></div>
+
+
+                    </div>
+                    <div class="card-reveal">
+
+                        <div class="row">
+                                <div class="col s11">
+                                        <span class="card-title grey-text text-darken-4 truncate">{{detail.pavadinimas}}</span>
+                                </div>
+                                <div class="col s1"> <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span></div>
+                        </div>
+
+                        <ul>
+                            <li class="truncate"><b>Cost: </b>{{detail.kaina|intcomma}} <i class="material-icons" style="font-size: 14px">attach_money</i></li>
+                            <li class="truncate"><b>Make Year: </b>{{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</li>
+                            <li class="truncate"><b>Engine: </b>{{detail.variklis}}</li>
+                            <li class="truncate"><b>Mileage: </b>{{detail.rida}} km</li>
+                            <li class="truncate"><b>Transmission: </b>{{detail.pavaruDeze}}</li>
+                            <li class="truncate"><b>Fuel: </b>{{detail.kuroTipas}}</li>
+                            <li class="truncate"><b>Body Type: </b>{{detail.kebuloTipas}}</li>
+                            <li class="truncate"><b>Color: </b>{{detail.spalva}}</li>
+                            <li class="truncate"><b>Drive Type: </b>{{detail.varantisRatai}}</li>
+                            <li>...</li>
+                        </ul>
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}" class="btn-small waves-effect waves-light blue-grey darken-2 z-depth-2">More</a>
+                        <div class="right date-text">{{detail.skelbimasSukurtas|date:'Y-m-d'}}</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+
+        </div>
+
+
+
+        <div class="divider"></div>
+
+
+        <br>
+
+
+
+        <!-- IMPORT testimonial style only-->
+        <link href="{% static 'css/testimonial-style.css' %}" type="text/css" rel="stylesheet"/>
+
+            <div class="row">
+                <div class="col s12` m12 l12 xl12" >
+
+                    <h2 class="title center-align">Recommended By</h2>
+
+                    <div class="content-slider">
+                        <div class="slider">
+                            <div class="mask">
+                            <ul>
+                                <li class="anim1">
+                                <!-- <div class="quote">Hello, this is a quote from a person.</div> -->
+                                    <p class="flow-text">
+                                            Sit amet nulla facilisi morbi tempus iaculis urna id volutpat. 
+                                            Malesuada pellentesque elit eget gravida cum. Sapien nec sagittis 
+                                            aliquam malesuada bibendum arcu vitae elementum curabitur. Neque convallis a cras semper auctor. 
+                                            Viverra nibh cras pulvinar mattis nunc sed blandit. Urna porttitor rhoncus dolor purus non enim praesent. 
+                                            In cursus turpis massa tincidunt. Sit amet massa vitae tortor condimentum lacinia quis vel. 
+                                    </p>
+                                    <div class="source">- Thomas D.</div>
+                                </li>
+
+                                <li class="anim2">
+                                    <p class="flow-text">
+                                            Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu 
+                                            feugiat. Posuere ac ut consequat semper viverra nam libero justo 
+                                            laoreet. Lectus mauris ultrices eros in. At tellus at urna 
+                                            condimentum mattis pellentesque id nibh. Etiam tempor orci eu 
+                                            lobortis elementum nibh tellus. Cras fermentum odio eu feugiat 
+                                            pretium.
+                                    </p>
+                                    <div class="source">- Ashley G.</div>
+                                </li>
+
+                                <li class="anim3">
+                                    <p class="flow-text">
+                                            Elementum integer enim neque volutpat ac tincidunt vitae.
+                                             Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras.
+                                             Enim nunc faucibus a pellentesque sit amet. Ornare suspendisse sed nisi 
+                                             lacus sed. Nam aliquam sem et tortor consequat id porta nibh venenatis. 
+                                    </p>
+                                    <div class="source">- Wesley P.</div>
+                                </li>
+
+
+                                <li class="anim4">
+                                    <p class="flow-text">
+                                            Risus at ultrices mi tempus imperdiet nulla malesuada. 
+                                            Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. 
+                                            Dolor morbi non arcu risus quis. A cras semper auctor neque vitae. 
+                                            Dignissim sodales ut eu sem integer. Tortor vitae purus faucibus ornare suspendisse sed nisi. 
+                                            Quam vulputate dignissim suspendisse in est ante in.
+                                    </p>
+                                    <div class="source">- Adrew K.</div>
+                                </li>
+
+                                <li class="anim5">
+                                    <p class="flow-text">
+                                            Nisl nisi scelerisque eu ultrices vitae. Molestie a iaculis at erat pellentesque. 
+                                            Maecenas pharetra convallis 
+                                            posuere morbi leo urna molestie. 
+                                            Arcu cursus vitae congue mauris rhoncus aenean vel elit.
+                                    </p>
+                                        <div class="source">- Zach G.</div>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+    </div> <!-- end white container-->
+</div> <!-- end container-->
+
+
+{% endblock %}

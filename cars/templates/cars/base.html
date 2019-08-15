@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--AO Websites-->
+{% load static %}
+
+
+<!--This is a base-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="lt" xml:lang="lt">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+        <!-- Varible is used in other pages -->
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+
+        <!-- Varible is used in other pages -->
+        <meta name="description" content="{% block meta_description %} {% endblock %}">
+
+        <link rel="icon" href="{% static '/static-website-images/favicon-img.png' %}" type="image/x-icon">
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/materialize.min.css' %}" type="text/css" rel="stylesheet"/>
+        <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet"/>
+        
+
+        <!--Open Graph tag to make it better look on facebook-->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="AutoMotyvas.com" />
+        <meta property="og:title" content="{% block meta_og_title %} {% endblock %} | AutoMotyvas.com">
+        <meta property="og:image" content="{% block meta_og_image_main %} {% endblock %}">
+        <meta property="og:url" content="{% block meta_og_url %} {% endblock %}">
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:locale:alternate" content="lt_LT" />
+        
+
+
+
+    </head>
+    <body class="blue-grey lighten-5">
+
+
+        <nav class="blue-grey darken-2" role="navigation">
+                <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index_page' %}" class="brand-logo scrollspy">AutoMove</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{% url 'index_page' %}"><i class="material-icons left">home</i>Home</a></li>
+                        <li><a href="{% url 'automobiliaiVisi_page' %}"><i class="material-icons left">directions_car</i>Cars</a></li>
+                        <li><a href="{% url 'lizingoInformacija_page' %}"><i class="material-icons left">credit_card</i>Credit Info</a></li>
+                        <li><a href="{% url 'kontaktai_page' %}"><i class="material-icons left">contact_mail</i>Contact Us </a></li>
+                    </ul>
+
+                    <ul id="nav-mobile" class="sidenav">
+                        <li><a href="{% url 'index_page' %}"><i class="material-icons left">home</i>Pradžia</a></li>
+                        <li><a href="{% url 'automobiliaiVisi_page' %}"><i class="material-icons left">directions_car</i>Automobiliai</a></li>
+                        <li class="hide"><a href="#"><i class="material-icons left">build</i>Detalės</a></li>
+                        <li><a href="{% url 'lizingoInformacija_page' %}"><i class="material-icons left">credit_card</i>Lizingas</a></li>
+                        <li><a href="{% url 'kontaktai_page' %}"><i class="material-icons left">contact_mail</i>Kontaktai</a></li>
+                        
+                        <li><div class="divider"></div></li>
+
+
+
+                    </ul>
+                    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </div>
+        </nav>
+
+<!-- Unique content for each of the pages-->
+        {% block content%}
+        {% endblock %}
+
+        <div class="fixed-action-btn">
+                <!-- Must set style="pointer-events:none;" in order from scrollspy to work on icons-->
+                    <a id="myBtn" href="#logo-container" class="btn-floating btn-medium waves-effect waves-light blue-grey darken-2 z-depth-2">
+                        <i class="material-icons large" style="pointer-events:none;">arrow_upward</i>
+                    </a>
+
+        </div>
+
+<!-- Footer -->
+        <footer class="page-footer blue-grey lighten-2" style="padding-top: 10px; padding-bottom: -10px;">
+
+            <div class="container">
+
+                    <div class="footer-copyright blue-grey lighten-2" >
+                        <div class="container center-align">
+
+                            <div class="row">
+                                <div class="col s12 m12 l12 xl12">
+
+                                     <!--Current year and Website name-->
+                                    <span class="cool" style="font-size: 18px;">
+                                        <a href="../admin/" class="grey-text text-lighten-4" > &copy; </a>
+                                        <script>
+                                        document.write(new Date().getFullYear())
+                                        </script>
+                                        AutoMove
+                                    </span>
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+            </div>
+         
+
+
+        </footer>
+
+
+
+        <!--  Scripts-->
+        <!--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+        <script src="{% static 'js/materialize.min.js' %}"></script>
+        <script src="{% static 'js/init.js' %}"></script>
+
+
+    </body>
+</html>

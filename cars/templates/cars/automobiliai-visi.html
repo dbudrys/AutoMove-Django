@@ -1,0 +1,162 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+{% load humanize %} <!-- Load from installed to humanize numbers, add commas to KAINA -->
+
+<!-- Page title coming from base.html-->
+{% block title %}Cars From All Over The World | AutoMove{% endblock %}
+
+
+<!-- Page title coming from base.html-->
+{% block meta_description %}
+Sellig cars from all over the world | Car Info Page
+{% endblock %}
+
+
+<!-- OG meta tags coming from base.html-->
+{% block meta_og_title %}
+   Visi Automobiliai
+{% endblock %}
+
+{% block meta_og_image_main %}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div style="height: 100px;"></div>
+
+<div class="container ">
+    <div class="white main-raised z-depth-5">
+
+
+        <h2 class="title center-align">Newest Car Posts <div class="total_cars_text">Total Count: {{ carCount }}</div></h2>
+
+        <div class="row">
+
+            <form action="{% url 'automobiliaiVisi_page' %}" method="get">
+            <div class="col offset-l4 offset-xl4 offset-m4 s8 m3 l3 xl3 ">
+                <select name="select_type" >
+                    <option value="" selected>All</option>
+                    {% for carType in carTypeOnly %}
+                    <option value="{{carType.id}}">{{carType.car_make}} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col s4 m5 l5 xl5">
+                <button type="submit" class="btn-small waves-effect waves-light blue-grey z-depth-2" value="Rodyti" >Sort</button>
+            </div>
+            </form>
+
+        </div>
+
+        <div class="row">
+
+            {% for detail in carDetails %}
+            <div class="col s12 m6 l4 xl4">
+                <div class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}">
+                            <img src="{{ detail.image_thumbnail.url }}" alt="{{ detail.pavadinimas}} ">
+                        </a>
+
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s11">
+                                <span class="card-title activator grey-text text-darken-4 truncate" >{{detail.pavadinimas}}, {{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</span>
+                            </div>
+                            <div class="col s1"> <span class="card-title activator"><i class="material-icons right">more_vert</i></span></div>
+                        </div>
+                        <ul>
+                                <li class="truncate"><b>Cost: </b>{{detail.kaina|intcomma}} <i class="material-icons" style="font-size: 14px">attach_money</i></li>
+                                <li class="truncate"><b>Make Year: </b>{{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</li>
+                                <li class="truncate"><b>Engine: </b>{{detail.variklis}}</li>
+                                <li class="truncate"><b>Mileage: </b>{{detail.rida}} km</li>
+                                <li class="truncate"><b>Transmission: </b>{{detail.pavaruDeze}}</li>
+                                <li class="truncate"><b>Fuel: </b>{{detail.kuroTipas}}</li>
+    
+                        </ul>
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}" class="center-align btn-small waves-effect waves-light blue-grey darken-2 z-depth-2">More</a>
+                        <div class="right date-text">{{detail.skelbimasSukurtas|date:'Y-m-d'}}</div>
+                        <div class="clearfix"></div>
+
+
+                    </div>
+                    <div class="card-reveal">
+
+                        <div class="row">
+                                <div class="col s11">
+                                        <span class="card-title grey-text text-darken-4 truncate">{{detail.pavadinimas}}</span>
+                                </div>
+                                <div class="col s1"> <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span></div>
+                        </div>
+
+                        <ul>
+                            <li class="truncate"><b>Cost: </b>{{detail.kaina|intcomma}} <i class="material-icons" style="font-size: 14px">attach_money</i></li>
+                            <li class="truncate"><b>Make Year: </b>{{detail.pagaminimoMetai}}{{detail.pagaminimoMenuo}}</li>
+                            <li class="truncate"><b>Engine: </b>{{detail.variklis}}</li>
+                            <li class="truncate"><b>Mileage: </b>{{detail.rida}} km</li>
+                            <li class="truncate"><b>Transmission: </b>{{detail.pavaruDeze}}</li>
+                            <li class="truncate"><b>Fuel: </b>{{detail.kuroTipas}}</li>
+                            <li class="truncate"><b>Body Type: </b>{{detail.kebuloTipas}}</li>
+                            <li class="truncate"><b>Color: </b>{{detail.spalva}}</li>
+                            <li class="truncate"><b>Drive Type: </b>{{detail.varantisRatai}}</li>
+                            <li>...</li>
+                        </ul>
+
+                        <a href="{% url 'automobilioInfo_page' detail.id %}" class="btn-small waves-effect waves-light blue-grey darken-2 z-depth-2">More</a>
+                        <div class="right date-text">{{detail.skelbimasSukurtas|date:'Y-m-d'}}</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+
+            <div class="row center">
+                <!-- -->
+                {% if carDetails.has_other_pages %}
+                <ul class="pagination">
+                    {% if carDetails.has_previous %}
+                    <li class="waves-effect"><a href="?page={{ carDetails.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                    {% else %}
+                    <li class="disabled"><i class="material-icons">chevron_left</i></li>
+                    {% endif %}
+
+                    {% for i in carDetails.paginator.page_range %}
+                    {% if carDetails.number == i %}
+                        <li class="active blue-grey lighten-2 z-depth-2"><a>{{ i }}</a></li>
+                    {% else %}
+                        <li class="waves-effect"><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if carDetails.has_next %}
+                    <li class="waves-effect"><a href="?page={{ carDetails.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                    {% else %}
+                    <li class="disabled"><i class="material-icons">chevron_right</i></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+        <!-- -->
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+    </div> <!-- end white container-->
+</div> <!-- end container-->
+
+
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+{% load humanize %} <!-- Load from installed to humanize numbers, add commas to KAINA -->
+
+<!-- Page title coming from base.html-->
+{% block title %}Cars From All Over The World| AutoMove{% endblock %}
+
+
+<!-- Page title coming from base.html - Used for SEO -->
+{% block meta_description %}
+Sellig cars from all over the world.
+{% endblock %}
+
+
+<!-- OG meta tags coming from base.html-->
+{% block meta_og_title %}
+   Kontaktinė Informacija
+{% endblock %}
+
+{% block meta_og_image_main %}
+{% endblock %}
+
+{% block meta_og_url %}
+https://www.automotyvas.com{{request.get_full_path}}
+{% endblock %}
+
+{% block content %}
+<div class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="parallax-header-text center">
+                    <b>Get Your Dream Car Today</b>
+                </h1>
+                <div class="row center">
+                    <!-- <h5 class="header col s12 light">Isigykite Automobili jau siandien</h5> -->
+                </div>
+
+            <!-- Button on the header parallax image -->
+                <div class="row center">
+                    <a href="{% url 'automobiliaiVisi_page' %}" class="header-button btn-large waves-effect waves-light blue-grey darken-2 z-depth-2">All Cars</a>
+               </div>    
+            
+                <br><br>
+        
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'static-website-images/header-picture.jpg' %}" alt="background img 1"></div>
+</div>
+
+
+
+<div class="container ">
+    <div class="white main-raised z-depth-5">
+
+        <h2 class="title center-align">Contact Form</h2>
+
+     
+        <form role="form" method="POST">
+            {% csrf_token %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12 l6 xl6">
+
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            Dui ut ornare lectus sit amet est placerat in egestas. 
+                            Purus sit amet volutpat consequat mauris nunc congue nisi. 
+                            Placerat orci nulla pellentesque dignissim enim sit amet venenatis urna. 
+                            Egestas pretium aenean pharetra magna ac placerat. 
+                            Sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum. 
+                            Nunc non blandit massa enim. Dictumst vestibulum rhoncus est pellentesque. 
+                            In fermentum posuere urna nec tincidunt praesent.
+
+
+                            <div class="row">
+                                <div class="col s6 m6 l6 xl6 left-align">
+                                    <h5 class="flow-text">Email</h5>
+                                    <p><a href="mailto:a@b.c" style="font-size:calc(8px + 0.85vw);">a@b.c</a></p>
+                                </div>
+                                <div class="col s6 m6 l6 xl6 right-align">
+                                    <h5 class="flow-text">Phone Number</h5>
+                                    <p><a href="tel:(931)555-1234" style="font-size:calc(8px + 0.85vw);">(931)555-1234</a></p>
+                                </div>
+                            </div>
+
+                        
+                    </div>
+
+
+
+
+                    <div class="col s12 m12 l6 xl6">
+
+                        <div class="hide-on-large-only">
+                            <div class="divider" style="margin-top: 5px;"></div>
+                            <h4 class="center-align">Contact Us</h4>
+                            
+                        </div>
+
+                        <!-- <h3>Rasykite Mums Laiska</h3> -->
+                            <div class="input-field">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="icon_prefix" type="text" class="validate" name="contact_name" required="required" 
+                                    oninvalid="this.setCustomValidity('Missing Name')" oninput="setCustomValidity('')">
+                                    <label for="icon_prefix">Full Name</label>
+                            </div>
+
+                            <div class="input-field">
+                                    <i class="material-icons prefix">alternate_email</i>
+                                    <input id="icon_email" type="email" class="validate" name="contact_email" 
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="required"
+                                    oninvalid="this.setCustomValidity('Missing Email Address')" oninput="setCustomValidity('')">
+                                    <label for="icon_email">Email Address</label>
+                            </div>
+                            
+                            <div class="input-field">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="icon_telephone" type="tel" class="validate" name="contact_phone"
+                                    required="required" 
+                                    oninvalid="this.setCustomValidity('Missing Phone Number')" oninput="setCustomValidity('')">
+                                    <label for="icon_telephone">Phone Number</label>
+                            </div>
+
+                            <div class="input-field">
+                                    <i class="material-icons prefix">email</i>
+                                    <textarea id="textarea1" class="materialize-textarea validate" name="contact_message"
+                                    required="required" pattern="[A-Za-z0-9]{1,20}"
+                                    oninvalid="this.setCustomValidity('What would you like to tell us?')" oninput="setCustomValidity('')"></textarea>
+                                    <label for="textarea1">Your Message</label>
+                            </div>
+
+
+                            {% if messages %}
+                                
+                                    {% for message in messages %}
+                                        {% if message.tags %}
+                                            <div id="success_toast"></div>
+                                        {% endif %}
+                                    
+                                    {% endfor %}
+                                    
+                            {% endif %}
+
+                            <button type="submit"  name="submit" class="btn waves-effect waves-light blue-grey darken-2 z-depth-2">Send</button>
+                            
+
+
+                    </div>
+
+                </div>
+            </div>
+
+           
+        </form>
+
+   
+
+            
+      
+
+    </div> <!-- end white container-->
+</div> <!-- end container-->
+
+
+{% endblock %}
